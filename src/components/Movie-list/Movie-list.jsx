@@ -1,12 +1,4 @@
-import styled from "styled-components";
-
-const List = styled("ul")`
-    padding: 0;
-    list-style: none;
-`
-const ListItem = styled('li')`
-    padding: 5px 10px;
-`
+import { ListItem, List } from "./Movie-list.styled"
 
 export const MovieList = ({ movies }) => {
 

@@ -1,17 +1,22 @@
-// import styled from "styled-components";
+
 import { useEffect, useState } from "react"
-import { getTrending } from "services/api.services";
-import { Container } from "components/Container";
-import { MovieList } from "components/Movie-list";
+import { API } from "services/api.services";
+import { Container } from "components/Container/Container";
+import { MovieList } from "components/Movie-list/Movie-list";
+
+// API.getMovie(105248, '/credits').then((res) => console.log('credits', res));
+// API.getMovie(105248, 'details').then((res) => console.log('det', res));
+// API.getMovie(105248, '/reviews').then((res) => console.log('reviews', res));
 
 
 
 export const Home = () => {
     const [trendingFilms, setTrendingFilms] = useState([])
-    
+
     useEffect(() => {
-        getTrending().then((res) => {
+        API.getTrending().then((res) => {
             setTrendingFilms(res.results)
+            // console.log(res.results)
         }).catch((err)=>{console.log(err.message)})
     }, [])
 
