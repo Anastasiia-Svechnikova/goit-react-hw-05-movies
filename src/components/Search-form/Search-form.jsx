@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Container } from "components/Container/Container";
+import { StyledForm, StyledInput, StyledButton } from "./search-form.styled";
 
 export const SearchForm = ({onSubmit}) => {
     const [query, setQuery] = useState('');
@@ -19,10 +21,13 @@ export const SearchForm = ({onSubmit}) => {
     }
 
     return (
-        <form onSubmit={handleFormSubmit}>
-            <input name='film' value={query} placeholder="Enter your query here, please" onChange={handleInputChange}>
-            </input>
-            <button type="submit">Search</button>
-        </form>
+        <Container>
+
+        <StyledForm onSubmit={handleFormSubmit}>
+            <StyledInput name='film' value={query} placeholder="Enter your query here, please" onChange={handleInputChange}>
+            </StyledInput>
+            <StyledButton type="submit">Search</StyledButton>
+        </StyledForm>
+        </Container>
     )
 }
