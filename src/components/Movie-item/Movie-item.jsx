@@ -1,21 +1,17 @@
-
-// import { useEffect, useState } from "react";
+import { Link, Outlet } from 'react-router-dom';
 
 export const MovieItem = ({ movie }) => {
-  const {name, title, genres, poster_path, id, vote_average, overview, release_date} = movie
-    console.log(genres)
-    const extractedGenres = genres.map(({ name, id }) => <li key={id}>{name}</li> )
-    console.log(extractedGenres)
+  const {name, title, genres, poster_path, vote_average, overview, release_date} = movie
+
+    const extractedGenres = genres.map(({ name, id }) => <li key={id}>{name}</li>)
+    
     return (
         <>
             <div>
-                {/* info wrapper */}
                 <div>
-                    {/* img thumb */}
                     <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={name || title}/>
                 </div>
                 <div>
-                    {/* {info} */}
                     <h2>{name || title}<span> { `(${release_date.slice(0, 4)})`}</span></h2>
                     <p>User Score: { Math.floor(vote_average * 10)}%</p>
                     <h3>Overview</h3>
@@ -27,13 +23,15 @@ export const MovieItem = ({ movie }) => {
                 </div>
             </div>
             <div>
-                {/* navigation */}
                 <p>Additional info</p>
                 <ul>
-                    <li>Cast { id}</li>
-                    <li>Reviews</li>
+                    <li>
+                        <Link  to="cast">Cast</Link>
+                    </li>
+                    <li><Link  to="reviews">Reviews</Link></li>
                 </ul>
             </div>
+            <Outlet/>
             
 </>
     )

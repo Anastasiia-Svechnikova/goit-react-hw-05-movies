@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
+
 import { API } from "services/api.services";
-import { MovieItem } from "components/Movie-item/Movie-item"
+import { MovieItem } from "components/Movie-item/Movie-item";
+import { Container } from "components/Container/Container";
 
 export const MovieDetails = () => {
-    const [movie, setMovie] = useState(null)
+    const [movie, setMovie] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
-    const [status, setStatus] = useState('idle')
+    const [status, setStatus] = useState('idle');
     
     const { id } = useParams();
+    const location = useLocation();
+    console.log(location)
     console.log(id)
-
 
     useEffect(() => {
 
@@ -22,16 +25,20 @@ export const MovieDetails = () => {
             setErrorMessage("Oops, smth went wrong..")
             setStatus('rejected')
             console.log(err.message)
-      } )
+        })
+
+        
+
 
     }, [id])
     
 
     return (
-        <>
+        <Container>
+            <Link to={location.state?.from ?? '/movies' }>Go back</Link>
             {status === 'resolved' && <MovieItem movie={movie} />}
             {status === 'rejected' && <p>{errorMessage}</p>}
-        </>
+        </Container>
         
     )
 }

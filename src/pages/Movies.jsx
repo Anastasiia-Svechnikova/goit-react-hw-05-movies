@@ -1,7 +1,8 @@
+import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
+import { Container } from "components/Container/Container";
 import { SearchForm } from "components/Search-form/Search-form"
 import { API } from "services/api.services";
 import { MovieList } from "components/Movie-list/Movie-list";
@@ -38,11 +39,14 @@ export const Movies = () => {
 
     return (
         <main>
+            <Container>
+
             <SearchForm onSubmit={handleFormSubmit} />
             {errorMessage?<p>{errorMessage}</p> : <MovieList movies={movies} />}           
             <ToastContainer
                 hideProgressBar={true}
                 theme="dark" />
+            </Container>
         </main>
     )
 }

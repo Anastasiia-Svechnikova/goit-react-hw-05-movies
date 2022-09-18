@@ -16,7 +16,6 @@ export const Home = () => {
     useEffect(() => {
         API.getTrending().then((res) => {
             setTrendingFilms(res.results)
-            // console.log(res.results)
         }).catch((err)=>{console.log(err.message)})
     }, [])
 
