@@ -18,10 +18,11 @@ export const Movies = () => {
         if (query) {
             API.getSearchMovies(query).then((res) => {
                 if (!res.results.length) {
-                    toast.error("It seems like, there's been nothing found. Try again, please")
+                    toast.error("It seems like there's been nothing found. Try again, please")
                     return;
                 }
                 setMovies(res.results)
+                console.log(res.results)
 
             }).catch((err) => {
                 setErrorMessage("Oops, smth went wrong..")

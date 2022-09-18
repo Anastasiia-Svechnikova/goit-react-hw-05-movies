@@ -30,7 +30,7 @@ const getSearchMovies = async(query) => {
     }
 }
 
- const getMovie = async(id, info = '')  => {
+ const getMovieById = async(id, info = '')  => {
     
     try {
         const result = await axios.get(`${BASE_URL}movie/${id}${info}`, {
@@ -44,7 +44,7 @@ const getSearchMovies = async(query) => {
  }
 
 export const API = {
-    getMovie,
+    getMovieById,
     getTrending,
     getSearchMovies
  }
