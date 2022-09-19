@@ -11,7 +11,7 @@ import { ReviewsList } from "./ReviewsList";
     const [status, setStatus] = useState('idle');
         const [errorMessage, setErrorMessage] = useState('');
     const { moviesId } = useParams()
-    console.log(moviesId)
+
 
     useEffect(() => {
 
@@ -33,11 +33,10 @@ import { ReviewsList } from "./ReviewsList";
 
     }, [moviesId])
 
-console.log(reviews)
 
     return (
         <Container>
-            {status === 'not found' && <p>No reviews</p>}
+            {status === 'not found' && <p>We don't have any reviews for this movie</p>}
             {status === 'resolved' && <ReviewsList reviews={reviews} />}
             {status === 'rejected' && <p>{errorMessage}</p>}
         </Container>

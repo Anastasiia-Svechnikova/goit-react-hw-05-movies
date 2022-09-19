@@ -5,8 +5,9 @@ padding: 0;
 
 `
 
-export const ListItem = styled('ul')`
+export const ListItem = styled('li')`
 
+text-align: left;
 list-style: none;
 border-bottom: 1px solid black;
 `

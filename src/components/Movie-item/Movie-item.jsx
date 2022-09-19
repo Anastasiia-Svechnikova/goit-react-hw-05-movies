@@ -2,19 +2,21 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Suspense } from "react";
 import { Wrapper, Poster, Thumb, Description, GenresTitle, GenresList, GenresItem, MovieNav, NavWrapper, MovieLink, BackLink } from './Movie-item.styled';
 import { Container } from 'components/Container/Container';
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 export const MovieItem = ({ movie }) => {
 
     const location = useLocation();
-    console.log(location)
-    const {name, title, genres, poster_path, vote_average, overview, release_date} = movie
-
+    const from = location.state.from;
+    const { name, title, genres, poster_path, vote_average, overview, release_date } = movie;
     const extractedGenres = genres.map(({ name, id }) => <GenresItem key={id}>{name}</GenresItem>)
     
     return (
         <>
             <Container>
-                 <BackLink to={location.state?.from ?? '/movies' }>Go back</BackLink>
+                <BackLink to={location.state?.from ?? '/home'}>
+                    <BsFillArrowLeftCircleFill/>
+                    Go back</BackLink>
                 <Wrapper>
                 <Thumb>
                     <Poster src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={name || title}/>
@@ -31,13 +33,13 @@ export const MovieItem = ({ movie }) => {
                 </Description>
                 </Wrapper>
             </Container>
-            
+
             <NavWrapper>
                 <MovieNav>
                     <li>
-                        <MovieLink  to="cast">Cast</MovieLink>
+                        <MovieLink  to="cast" state={{from: from}} >Cast</MovieLink>
                     </li>
-                    <li><MovieLink  to="reviews">Reviews</MovieLink></li>
+                    <li><MovieLink  to="reviews" state={{from: from}}>Reviews</MovieLink></li>
                 </MovieNav>
             </NavWrapper>
             <Suspense fallback={<div>Loading page...</div>}>

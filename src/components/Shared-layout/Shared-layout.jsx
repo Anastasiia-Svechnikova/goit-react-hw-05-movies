@@ -6,8 +6,8 @@ export const SharedLayout = () => {
     return (
         <header>
             <NavBar>
-            <StyledLink to="/">Home</StyledLink>
-            <StyledLink to="/movies" >Movies</StyledLink>
+            <StyledLink end to="/">Home</StyledLink>
+            <StyledLink  to="/movies" >Movies</StyledLink>
             </NavBar>
             <Suspense fallback={<div>Loading page...</div>}>              
             <Outlet/>

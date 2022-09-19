@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const Wrapper = styled('div')`
 display: flex;
 gap: 30px;
+text-align: left;
 
 `
 export const Thumb = styled('div')`
@@ -52,7 +53,9 @@ text-decoration: none;
 `
 export const BackLink = styled(Link)`
 padding: 7px;
-display: block;
+display: flex;
+
+align-items: center;
 font-size: 14px;
 color: #952f2f;
 text-decoration: none;

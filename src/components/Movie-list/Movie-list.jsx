@@ -1,10 +1,12 @@
-import { ListItem, List, StyledLink } from "./Movie-list.styled"
+import { ListItem, List, StyledLink, Image } from "./Movie-list.styled"
 
 
-export const MovieList = ({ movies }) => {
+export const MovieList = ({ movies, from }) => {
 
-    const elements = movies.map(({ name, title, id }) => <ListItem key={id}>
-        <StyledLink to={`/movies/${id}`} >{name || title}</StyledLink>       
+    const elements = movies.map(({ name, title, id, poster_path }) => <ListItem key={id}>
+        <StyledLink to={`/movies/${id}`} state={{ from: from }} >
+            <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={name || title} />
+            <p>{name || title}</p></StyledLink>       
     </ListItem>)
     
     return (

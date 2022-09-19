@@ -8,9 +8,9 @@ import { CastList } from "components/Cast/CastList";
  const Cast = () => {
     const [cast, setCast] = useState(null);
     const [status, setStatus] = useState('idle');
-        const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const { moviesId } = useParams()
-    console.log(moviesId)
+
 
     useEffect(() => {
 
@@ -27,8 +27,6 @@ import { CastList } from "components/Cast/CastList";
 
 
     }, [moviesId])
-
-console.log(cast)
 
     return (
         <Container>

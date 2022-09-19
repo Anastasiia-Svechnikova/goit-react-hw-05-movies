@@ -1,7 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import { Container } from "components/Container/Container";
 import { SearchForm } from "components/Search-form/Search-form"
 import { API } from "services/api.services";
@@ -12,13 +12,15 @@ import { MovieList } from "components/Movie-list/Movie-list";
  const Movies = () => {
 
     const [movies, setMovies] = useState([])
-     const [errorMessage, setErrorMessage] = useState('')
-     
-      const [searchParams, setSearchParams] = useSearchParams();
+    const [errorMessage, setErrorMessage] = useState('')
+    
+    const [searchParams, setSearchParams] = useSearchParams();
      const query = searchParams.get('query');
-     console.log(query)
      
-     useEffect(() => {
+    const location = useLocation()
+    const from = `${location.pathname}${location.search}`
+    
+    useEffect(() => {
         
         if (query) {
             API.getSearchMovies(query).then((res) => {
@@ -27,7 +29,6 @@ import { MovieList } from "components/Movie-list/Movie-list";
                     return;
                 }
                 setMovies(res.results)
-                console.log(res.results)
 
             }).catch((err) => {
                 setErrorMessage("Oops, smth went wrong..")
@@ -46,7 +47,7 @@ import { MovieList } from "components/Movie-list/Movie-list";
             <Container>
 
             <SearchForm onSubmit={handleFormSubmit} />
-            {errorMessage?<p>{errorMessage}</p> : <MovieList movies={movies} />}           
+                {errorMessage ? <p>{errorMessage}</p> : <MovieList movies={movies} from={ from} />}           
             <ToastContainer
                 hideProgressBar={true}
                 theme="dark" />
