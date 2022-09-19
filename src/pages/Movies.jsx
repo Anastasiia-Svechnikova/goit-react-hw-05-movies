@@ -9,11 +9,10 @@ import { MovieList } from "components/Movie-list/Movie-list";
 
 
 
-export const Movies = () => {
-
-    const [query, setQuery] = useState('');
-    const [movies, setMovies] = useState([])
-    const [errorMessage, setErrorMessage] = useState('')
+ const Movies = () => {
+const [query, setQuery] = useState('');
+const [movies, setMovies] = useState([])
+const [errorMessage, setErrorMessage] = useState('')
 
     useEffect(() => {
         if (query) {
@@ -49,4 +48,5 @@ export const Movies = () => {
             </Container>
         </main>
     )
-}
+ }
+export default Movies;

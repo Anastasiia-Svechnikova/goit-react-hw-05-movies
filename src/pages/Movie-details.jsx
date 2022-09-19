@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
-
 import { API } from "services/api.services";
 import { MovieItem } from "components/Movie-item/Movie-item";
 import { Container } from "components/Container/Container";
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
     const [movie, setMovie] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
     const [status, setStatus] = useState('idle');
@@ -42,3 +41,4 @@ export const MovieDetails = () => {
         
     )
 }
+export default MovieDetails;

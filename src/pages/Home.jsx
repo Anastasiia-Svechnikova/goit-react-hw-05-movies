@@ -10,7 +10,7 @@ import { MovieList } from "components/Movie-list/Movie-list";
 
 
 
-export const Home = () => {
+ const Home = () => {
     const [trendingFilms, setTrendingFilms] = useState([])
 
     useEffect(() => {
@@ -29,4 +29,5 @@ export const Home = () => {
             
         </main>
     )
-}
+ }
+export default Home;

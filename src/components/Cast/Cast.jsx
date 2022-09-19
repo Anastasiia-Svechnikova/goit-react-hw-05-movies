@@ -5,7 +5,7 @@ import { Container } from "components/Container/Container";
 import { CastList } from "components/Cast/CastList";
 
 
-export const Cast = () => {
+ const Cast = () => {
     const [cast, setCast] = useState(null);
     const [status, setStatus] = useState('idle');
         const [errorMessage, setErrorMessage] = useState('');
@@ -37,4 +37,5 @@ console.log(cast)
         </Container>
         
     )
-}
+ }
+export default Cast;

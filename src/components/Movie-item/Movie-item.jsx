@@ -1,4 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
+import { Suspense } from "react";
 
 export const MovieItem = ({ movie }) => {
   const {name, title, genres, poster_path, vote_average, overview, release_date} = movie
@@ -31,7 +32,9 @@ export const MovieItem = ({ movie }) => {
                     <li><Link  to="reviews">Reviews</Link></li>
                 </ul>
             </div>
+            <Suspense fallback={<div>Loading page...</div>}>
             <Outlet/>
+            </Suspense>
             
 </>
     )

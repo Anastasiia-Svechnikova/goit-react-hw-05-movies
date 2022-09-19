@@ -6,7 +6,7 @@ import { ReviewsList } from "./ReviewsList";
 
 
 
-export const Reviews = () => {
+ const Reviews = () => {
     const [reviews, setReviews] = useState(null);
     const [status, setStatus] = useState('idle');
         const [errorMessage, setErrorMessage] = useState('');
@@ -43,4 +43,5 @@ console.log(reviews)
         </Container>
         
     )
-}
+ }
+export default Reviews;
