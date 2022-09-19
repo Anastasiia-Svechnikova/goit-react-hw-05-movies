@@ -4,7 +4,7 @@ import { Container } from "components/Container/Container";
  const NotFound = () => {
     return (
         <Container>
-            <StyledText>Unfortunately, this page doesn't exist any more.</StyledText>
+            <StyledText>Unfortunately, this page doesn't exist.</StyledText>
             <StyledLink to="/">Go back to Home page</StyledLink>
         </Container>
     )

@@ -1,0 +1,19 @@
+import styled from "styled-components";
+
+export const CastItem = styled('li')`
+list-style: none;
+`
+export const CastImage = styled('img')`
+width: 120px;
+`
+export const Lis = styled('ul')`
+padding: 0;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+gap: 10px;
+
+text-align: center;
+font-size: 11px;
+
+`
+

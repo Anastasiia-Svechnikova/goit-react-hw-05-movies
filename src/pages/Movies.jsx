@@ -1,7 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-
+import { useSearchParams } from "react-router-dom";
 import { Container } from "components/Container/Container";
 import { SearchForm } from "components/Search-form/Search-form"
 import { API } from "services/api.services";
@@ -10,11 +10,16 @@ import { MovieList } from "components/Movie-list/Movie-list";
 
 
  const Movies = () => {
-const [query, setQuery] = useState('');
-const [movies, setMovies] = useState([])
-const [errorMessage, setErrorMessage] = useState('')
 
-    useEffect(() => {
+    const [movies, setMovies] = useState([])
+     const [errorMessage, setErrorMessage] = useState('')
+     
+      const [searchParams, setSearchParams] = useSearchParams();
+     const query = searchParams.get('query');
+     console.log(query)
+     
+     useEffect(() => {
+        
         if (query) {
             API.getSearchMovies(query).then((res) => {
                 if (!res.results.length) {
@@ -33,7 +38,7 @@ const [errorMessage, setErrorMessage] = useState('')
 
 
     const handleFormSubmit = (newQuery) => {
-        setQuery(newQuery);
+        setSearchParams({query: newQuery })
     }
 
     return (

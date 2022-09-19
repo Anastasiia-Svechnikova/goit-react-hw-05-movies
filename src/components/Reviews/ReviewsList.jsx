@@ -1,17 +1,19 @@
+import { List, ListItem, Text } from "./ReviewsList.styled"
+
 export const ReviewsList = ({ reviews }) => {
     
     const elements = reviews.map(({ content, id, author }) => (
         
-        <li key={id}>
+        <ListItem key={id}>
            
             <h4>Author: {author}</h4>
-            <p> { content}</p>
-        </li>)
+            <Text> { content}</Text>
+        </ListItem>)
         )
     
     return (
-        <ul>
+        <List>
             {elements}
-        </ul>
+        </List>
     )
 }

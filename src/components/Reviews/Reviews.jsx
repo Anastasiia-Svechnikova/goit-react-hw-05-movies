@@ -10,12 +10,12 @@ import { ReviewsList } from "./ReviewsList";
     const [reviews, setReviews] = useState(null);
     const [status, setStatus] = useState('idle');
         const [errorMessage, setErrorMessage] = useState('');
-    const { id } = useParams()
-    console.log(id)
+    const { moviesId } = useParams()
+    console.log(moviesId)
 
     useEffect(() => {
 
-        API.getMovieById(id, '/reviews').then((res) => {
+        API.getMovieById(moviesId, '/reviews').then((res) => {
             if (!res.results.length) {
                 setStatus('not found')
                 return;
@@ -31,7 +31,7 @@ import { ReviewsList } from "./ReviewsList";
         
 
 
-    }, [id])
+    }, [moviesId])
 
 console.log(reviews)
 

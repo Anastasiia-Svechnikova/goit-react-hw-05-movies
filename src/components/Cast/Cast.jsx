@@ -9,12 +9,12 @@ import { CastList } from "components/Cast/CastList";
     const [cast, setCast] = useState(null);
     const [status, setStatus] = useState('idle');
         const [errorMessage, setErrorMessage] = useState('');
-    const { id } = useParams()
-    console.log(id)
+    const { moviesId } = useParams()
+    console.log(moviesId)
 
     useEffect(() => {
 
-        API.getMovieById(id, '/credits').then((res) => {
+        API.getMovieById(moviesId, '/credits').then((res) => {
             setCast(res.cast)
             setStatus('resolved')
         }).catch((err) => {
@@ -26,7 +26,7 @@ import { CastList } from "components/Cast/CastList";
         
 
 
-    }, [id])
+    }, [moviesId])
 
 console.log(cast)
 
